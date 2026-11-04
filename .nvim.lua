@@ -1,0 +1,1 @@
+print("uzex-hackathon")

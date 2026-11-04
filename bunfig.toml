@@ -1,0 +1,6 @@
+[fmt]
+sortImports = true
+semi = true
+
+[[fmt.overrides]]
+files = ["src/**"]
