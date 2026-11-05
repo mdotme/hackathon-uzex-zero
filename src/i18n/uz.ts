@@ -1,0 +1,22 @@
+import type { Dict } from "./ru";
+
+export const uz: Dict = {
+  welcome: (name: string) =>
+    `Assalomu alaykum, <b>${name}</b>! 👋\nMen tovar-xomaşyo birjasi bitimlari böyiça AI-yordamchiman`,
+  chooseLang: "Tilni tanlang:",
+  langSaved: "Til saqlandi ✅",
+  askPrompt:
+    "Birja bitimlari haqida savol bering — javob berishga harakat qilaman",
+  busy: "Biroz kuting, oldingi sörovni bajaryapman…",
+  error: "Nimadir xato ketdi, qaytadan urinib köring",
+  youSaid: (text: string) => `Siz yozdingiz:\n\n${text}`,
+  btnHelp: "❓ Yordam",
+  btnLanguage: "🌐 Tilni özgartiriş",
+  help:
+    "Men tovar-xomaşyo birjasi bitimlari haqidagi savollarga javob beraman. Masalan:\n\n" +
+    "• 2025-yilda nechta bitim tuzilgan?\n" +
+    "• Bitimlar summasi böyiça top-5 tovar\n" +
+    "• Oxirgi oyda sementning örtaça narxi",
+  btnCredits: "👨‍💻 Jamoa",
+  creditsTitle: "👨‍💻 <b>Dasturçilar jamoasi</b>\nUZEX AI Hackathon 2026",
+};

@@ -1,17 +1,7 @@
-import { Bot } from "grammy";
-import { EnvConf, logger } from "./services";
+import { createBot, setBotCommands } from "./bot";
+import { closeAppDb, logger } from "./services";
 
-const bot = new Bot(EnvConf.BOT_TOKEN);
-
-bot.on("message", (ctx) => {
-  logger.debug(
-    `Message received: ${ctx.message.text} from ${ctx.from.first_name}`,
-  );
-});
-
-bot.catch((err) => {
-  logger.error({ err }, "GrammY update error");
-});
+const bot = createBot();
 
 // Graceful shutdowns
 let isStopping = false;
@@ -30,12 +20,17 @@ async function stop(signal?: string) {
   } catch (err) {
     logger.error({ err }, "Error while stopping bot");
   } finally {
+    closeAppDb();
     process.exit(0);
   }
 }
 
 process.once("SIGINT", stop);
 process.once("SIGTERM", stop);
+
+await setBotCommands(bot).catch((err) =>
+  logger.warn({ err }, "Failed to set bot commands"),
+);
 
 bot.start({
   onStart(info) {
