@@ -1,6 +1,6 @@
 import z from "zod";
 
-import { DataQueryError, sqlReferences } from "../../services";
+import { DataQueryError, queryDataRows, sqlReferences } from "../../services";
 import { runQuery } from "./run-query";
 import { defineTool } from "./tool";
 
@@ -28,6 +28,19 @@ const QUERYABLE_RELATIONS = [
 
 const ALLOWED = new Set(QUERYABLE_RELATIONS);
 
+// Every real relation that is not allowed. A CTE must not reuse one of these
+// names: CTE names are collected without scope, so a CTE in a subquery would
+// otherwise let an outer reference to the real table through.
+const HIDDEN_RELATIONS = new Set(
+  (
+    await queryDataRows(
+      "SELECT lower(table_name) AS name FROM information_schema.tables",
+    )
+  )
+    .map((row) => String(row.name))
+    .filter((name) => !ALLOWED.has(name)),
+);
+
 async function checkReferences(sql: string) {
   const refs = await sqlReferences(sql);
 
@@ -38,8 +51,16 @@ async function checkReferences(sql: string) {
     );
   }
 
-  const ctes = new Set(refs.ctes);
-  const denied = refs.relations.filter((name) => {
+  const ctes = new Set(refs.ctes.map((name) => name.toLowerCase()));
+  const shadowing = [...ctes].filter((name) => HIDDEN_RELATIONS.has(name));
+  if (shadowing.length > 0) {
+    throw new DataQueryError(
+      `CTE names must not reuse table names (${shadowing.join(", ")}). Rename the CTE.`,
+    );
+  }
+
+  const denied = refs.relations.filter((raw) => {
+    const name = raw.toLowerCase();
     const bare = name.startsWith("main.") ? name.slice(5) : name;
     return !ALLOWED.has(bare) && !ctes.has(name);
   });

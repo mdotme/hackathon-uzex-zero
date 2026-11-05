@@ -2,7 +2,7 @@ import type { Content, Part } from "@google/genai";
 
 import { logger } from "../services";
 import { generate, LLM_MODEL } from "./llm";
-import { SYSTEM_PROMPT, userMessage } from "./prompt";
+import { questionBlock, SYSTEM_PROMPT, userMessage } from "./prompt";
 import { executeTool, type ToolCall } from "./tools";
 import { verifyAnswer } from "./verify";
 
@@ -12,6 +12,9 @@ const DEFAULT_BUDGET_MS = 70_000;
 const MAX_CALL_MS = 30_000;
 const MAX_CALL_ATTEMPTS = 2;
 const FINAL_ANSWER_RESERVE_MS = 15_000;
+const MAX_PARALLEL_TOOL_CALLS = 4;
+
+const DATE_IN_ARGS_RE = /\d{4}-\d{2}-\d{2}/g;
 
 const FINISH_NOW =
   "Time is up: answer now using only the tool results above. " +
@@ -36,7 +39,16 @@ export interface AgentOptions {
   budgetMs?: number;
 }
 
-export type AgentOutcome = "answered" | "forced" | "unverified" | "failed";
+/**
+ * off_topic: the model answered without any successful tool call, so the text
+ * is not grounded in the data and is replaced by a fixed reply.
+ */
+export type AgentOutcome =
+  | "answered"
+  | "forced"
+  | "unverified"
+  | "off_topic"
+  | "failed";
 
 export interface AgentResult {
   outcome: AgentOutcome;
@@ -50,9 +62,21 @@ export interface AgentResult {
   error?: string;
 }
 
+function skippedCall(name: string, args: unknown): ToolCall {
+  return {
+    name,
+    args,
+    output: {
+      error: `At most ${MAX_PARALLEL_TOOL_CALLS} tool calls run at once. Repeat this call in the next step if it is still needed.`,
+    },
+    ok: false,
+    durationMs: 0,
+  };
+}
+
 function historyContents(history: AgentTurn[]): Content[] {
   return history.flatMap((turn) => [
-    { role: "user", parts: [{ text: turn.question }] },
+    { role: "user", parts: [{ text: questionBlock(turn.question) }] },
     { role: "model", parts: [{ text: turn.answer }] },
   ]);
 }
@@ -95,11 +119,18 @@ export async function runAgent(
     interfaceLang: options.interfaceLang ?? "uz",
   });
 
+  // Only data the user cannot inject counts as grounding: tool outputs, dates
+  // the model queried, today's date and earlier answers (verified the same
+  // way). User questions and tool argument numbers are excluded, otherwise a
+  // number stated in the question could be echoed back as a "fact".
   function groundingSources(): unknown[] {
     return [
-      firstMessage,
-      ...history.map((turn) => `${turn.question}\n${turn.answer}`),
-      ...toolCalls.flatMap((call) => [call.args, call.output]),
+      `Today: ${today()}`,
+      ...history.map((turn) => turn.answer),
+      ...toolCalls.flatMap((call) => [
+        JSON.stringify(call.args).match(DATE_IN_ARGS_RE) ?? [],
+        call.output,
+      ]),
     ];
   }
 
@@ -152,7 +183,11 @@ export async function runAgent(
       const calls = allowTools ? (response.functionCalls ?? []) : [];
       if (calls.length > 0) {
         const executed = await Promise.all(
-          calls.map((call) => executeTool(call.name ?? "", call.args ?? {})),
+          calls.map((call, i) =>
+            i < MAX_PARALLEL_TOOL_CALLS
+              ? executeTool(call.name ?? "", call.args ?? {})
+              : skippedCall(call.name ?? "", call.args ?? {}),
+          ),
         );
         for (const call of executed) {
           logger.debug(
@@ -182,6 +217,11 @@ export async function runAgent(
         return result("failed", "", {
           error: `Empty answer (finish reason: ${finishReason ?? "none"})`,
         });
+      }
+
+      if (!toolCalls.some((call) => call.ok)) {
+        logger.warn({ text: text.slice(0, 200) }, "Answer without data, replaced");
+        return result("off_topic", "");
       }
 
       const check = verifyAnswer(text, groundingSources());

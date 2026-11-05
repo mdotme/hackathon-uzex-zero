@@ -20,6 +20,11 @@ const instance = await DuckDBInstance.create(EnvConf.DATA_DB_PATH, {
   enable_external_access: "false",
   autoinstall_known_extensions: "false",
   autoload_known_extensions: "false",
+  // Model-written SQL must not be able to exhaust the host: cap memory and
+  // CPU, and never spill to disk. lock_configuration stops SQL undoing this.
+  memory_limit: "1GB",
+  threads: "4",
+  max_temp_directory_size: "0B",
   lock_configuration: "true",
 });
 
@@ -137,6 +142,11 @@ function collectReferences(
   if (obj.type === "BASE_TABLE") {
     const parts = [obj.catalog_name, obj.schema_name, obj.table_name];
     refs.relations.add(parts.filter(Boolean).join("."));
+  }
+  // SHOW / DESCRIBE / SUMMARIZE parse as SELECT over a SHOW_REF, which
+  // would otherwise slip past the relation allowlist.
+  if (obj.type === "SHOW_REF") {
+    refs.functions.add("SHOW / DESCRIBE / SUMMARIZE");
   }
   if (obj.type === "TABLE_FUNCTION") {
     const fn = obj.function as { function_name?: unknown } | undefined;

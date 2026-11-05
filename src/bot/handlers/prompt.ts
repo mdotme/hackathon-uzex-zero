@@ -7,6 +7,7 @@ import type { BotContext } from "../context";
 import { recentTurns, rememberTurn } from "../history";
 import { mainKeyboard } from "../keyboards";
 import { userLock } from "../middleware/lock";
+import { allowQuestion } from "../middleware/rate-limit";
 import { sendLanguagePicker } from "./start";
 
 const TYPING_INTERVAL_MS = 4_000;
@@ -77,7 +78,9 @@ promptHandler.on("message:text", async (ctx, next) => {
 
   const question = ctx.message.text.trim();
 
-  void userLock(ctx, () => answerQuestion(ctx, question)).catch(async (err) => {
+  void userLock(ctx, async () => {
+    if (await allowQuestion(ctx)) await answerQuestion(ctx, question);
+  }).catch(async (err) => {
     logger.error({ err, user: ctx.user.id }, "Failed to answer question");
     await ctx.reply(ctx.t.error).catch(() => {});
   });

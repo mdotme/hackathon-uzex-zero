@@ -40,12 +40,15 @@ async function evaluate(c: EvalCase) {
   const answer = result.text;
   const failures: string[] = [];
 
-  if (result.outcome !== "answered" && result.outcome !== "forced") {
+  const grounded = result.outcome === "answered" || result.outcome === "forced";
+  // A fixed off-topic reply is a correct answer for data the exchange lacks.
+  const acceptedOffTopic = c.absent && result.outcome === "off_topic";
+  if (!grounded && !acceptedOffTopic) {
     failures.push(
       `outcome ${result.outcome}${result.error ? `: ${result.error}` : ""}`,
     );
   }
-  if (c.absent && !ABSENT_RE.test(answer))
+  if (c.absent && !acceptedOffTopic && !ABSENT_RE.test(answer))
     failures.push("does not say the data lacks it");
   if (c.truth && truth.length === 0)
     failures.push("truth query returned no rows");
