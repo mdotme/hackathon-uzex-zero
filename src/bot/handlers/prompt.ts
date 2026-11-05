@@ -45,6 +45,7 @@ async function answerQuestion(ctx: BotContext, question: string) {
       },
       "Question answered",
     );
+    logger.info(`Question: ${question}\nResponse: ${result.text}`);
 
     if (result.outcome === "answered" || result.outcome === "forced") {
       rememberTurn(ctx.user.id, { question, answer: result.text });
