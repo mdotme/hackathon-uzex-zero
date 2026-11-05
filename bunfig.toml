@@ -1,6 +1,7 @@
 [fmt]
 sortImports = true
 semi = true
+ignorePatterns = ["data/", ".local/"]
 
 [[fmt.overrides]]
 files = ["src/**"]
