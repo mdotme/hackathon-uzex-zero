@@ -9,7 +9,14 @@ export const uz: Dict = {
     "Birja bitimlari haqida savol bering — javob berishga harakat qilaman",
   busy: "Biroz kuting, oldingi sörovni bajaryapman…",
   error: "Nimadir xato ketdi, qaytadan urinib köring",
-  youSaid: (text: string) => `Siz yozdingiz:\n\n${text}`,
+  thinking: "🔎 Birja ma'lumotlaridan javob qidiryapman…",
+  unverified:
+    "Javobni ma'lumotlar bilan tasdiqlay olmadim: unda sörov natijalarida yöq raqamlar bor edi. Savolni boşqaça berib köring.",
+  agentFailed:
+    "Javob olib bölmadi. Qaytadan urinib köring yoki savolni boşqaça bering.",
+  evidenceTitle: (queries: number, seconds: string) =>
+    `🔍 Asos: bazaga ${queries} ta sörov, ${seconds} s`,
+  rowsCount: (rows: number) => `qatorlar: ${rows}`,
   btnHelp: "❓ Yordam",
   btnLanguage: "🌐 Tilni özgartiriş",
   help:
