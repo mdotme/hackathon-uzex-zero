@@ -7,6 +7,11 @@ const schema = z.object({
   BOT_TOKEN: z.string().nonempty(),
   APP_DB_PATH: z.string().default(".local/app.sqlite"),
   DATA_DB_PATH: z.string().default("data/data.duckdb"),
+  GEMINI_API_KEY: z.string().nonempty(),
+  GEMINI_MODEL: z.string().default("gemini-3.8-flash"),
+  GEMINI_THINKING_LEVEL: z
+    .enum(["minimal", "low", "medium", "high"])
+    .default("low"),
 });
 
 // Resolve _FILE suffixed envs. If both FOO & FOO_FILE provided it will throw an error
