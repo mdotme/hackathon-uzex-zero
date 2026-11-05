@@ -16,6 +16,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@duckdb/node-api": "^2.0.0-r.1",
     "grammy": "^1.46.0",
     "pino": "^10.4.0",
     "pino-pretty": "^13.2.0",
