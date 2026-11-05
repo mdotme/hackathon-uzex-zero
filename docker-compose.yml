@@ -1,0 +1,18 @@
+services:
+  bot:
+    build: .
+    image: uzex-ai-agent-bot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      APP_DB_PATH: /app/.local/app.sqlite
+      DATA_DB_PATH: /app/data/data.duckdb
+    volumes:
+      - bot_data:/app/.local
+    cpus: 2
+    mem_limit: 1536m
+    stop_grace_period: 20s
+
+volumes:
+  bot_data:
