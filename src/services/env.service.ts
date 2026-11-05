@@ -6,6 +6,7 @@ const schema = z.object({
     .default("development"),
   BOT_TOKEN: z.string().nonempty(),
   APP_DB_PATH: z.string().default(".local/app.sqlite"),
+  DATA_DB_PATH: z.string().default("data/data.duckdb"),
 });
 
 // Resolve _FILE suffixed envs. If both FOO & FOO_FILE provided it will throw an error

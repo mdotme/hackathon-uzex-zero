@@ -1,5 +1,5 @@
 import { createBot, setBotCommands } from "./bot";
-import { closeAppDb, logger } from "./services";
+import { closeAppDb, closeDataDb, logger } from "./services";
 
 const bot = createBot();
 
@@ -21,6 +21,7 @@ async function stop(signal?: string) {
     logger.error({ err }, "Error while stopping bot");
   } finally {
     closeAppDb();
+    closeDataDb();
     process.exit(0);
   }
 }
