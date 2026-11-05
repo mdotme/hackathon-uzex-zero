@@ -7,6 +7,8 @@ const schema = z.object({
   BOT_TOKEN: z.string().nonempty(),
   APP_DB_PATH: z.string().default(".local/app.sqlite"),
   DATA_DB_PATH: z.string().default("data/data.duckdb"),
+  // Log file path; set to an empty string to log to stdout only.
+  LOG_FILE: z.string().default(".local/logs/bot.log"),
   GEMINI_API_KEY: z.string().nonempty(),
   GEMINI_MODEL: z.string().default("gemini-3.8-flash"),
   GEMINI_THINKING_LEVEL: z

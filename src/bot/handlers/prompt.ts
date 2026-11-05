@@ -28,7 +28,13 @@ async function answerQuestion(ctx: BotContext, question: string) {
 
     logger.info(
       {
-        user: ctx.user.id,
+        user: {
+          id: ctx.user.id,
+          name: [ctx.from?.first_name, ctx.from?.last_name]
+            .filter(Boolean)
+            .join(" "),
+          username: ctx.from?.username ? `@${ctx.from.username}` : null,
+        },
         question,
         outcome: result.outcome,
         ms: result.durationMs,

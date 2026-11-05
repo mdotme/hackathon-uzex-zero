@@ -8,6 +8,7 @@ services:
       NODE_ENV: production
       APP_DB_PATH: /app/.local/app.sqlite
       DATA_DB_PATH: /app/data/data.duckdb
+      LOG_FILE: /app/.local/logs/bot.log
     volumes:
       - bot_data:/app/.local
     cpus: 2
