@@ -14,9 +14,6 @@ export const uz: Dict = {
     "Javobni ma'lumotlar bilan tasdiqlay olmadim: unda sörov natijalarida yöq raqamlar bor edi. Savolni boşqaça berib köring.",
   agentFailed:
     "Javob olib bölmadi. Qaytadan urinib köring yoki savolni boşqaça bering.",
-  evidenceTitle: (queries: number, seconds: string) =>
-    `🔍 Asos: bazaga ${queries} ta sörov, ${seconds} s`,
-  rowsCount: (rows: number) => `qatorlar: ${rows}`,
   btnHelp: "❓ Yordam",
   btnLanguage: "🌐 Tilni özgartiriş",
   help:

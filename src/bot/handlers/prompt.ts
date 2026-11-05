@@ -32,7 +32,12 @@ async function answerQuestion(ctx: BotContext, question: string) {
         outcome: result.outcome,
         ms: result.durationMs,
         modelCalls: result.modelCalls,
-        queries: result.toolCalls.length,
+        queries: result.toolCalls.map((call) => ({
+          query: call.query ?? call.name,
+          ok: call.ok,
+          rows: call.output.row_count,
+          ms: call.durationMs,
+        })),
         repaired: result.repaired,
         unverified: result.unverified,
         error: result.error,
