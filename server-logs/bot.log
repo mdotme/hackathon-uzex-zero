@@ -1,0 +1,2653 @@
+[2026-11-05 09:48:13 UTC] INFO: Bot started and running (@<bot>)
+[2026-11-05 09:49:06 UTC] WARN: Answer without data, replaced
+    text: "Assalomu alaykum! Men O‘zbekiston tovar-xomashyo birjasi (O‘zRTXB / UZEX) bitimlar reyestri ma’lumotlari bo‘yicha savollarga javob beruvchi yordamchiman.\n\nBirjada tuzilgan bitimlar, tovarlar narxlari,"
+[2026-11-05 09:49:06 UTC] INFO: Question answered
+    user: {
+      "id": "user-1",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "salom bu nima?"
+    outcome: "off_topic"
+    ms: 3570
+    modelCalls: 1
+    queries: []
+    repaired: false
+    unverified: []
+[2026-11-05 09:49:06 UTC] INFO: Question: salom bu nima?
+Response: 
+[2026-11-05 10:15:24 UTC] INFO: Question answered
+    user: {
+      "id": "user-1",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "Сколько экспортных сделок было в 2024 году и на какую сумму в долларах?"
+    outcome: "answered"
+    ms: 10013
+    modelCalls: 2
+    queries: [
+      {
+        "query": "deal_totals(date_from := '2024-01-01', date_to := '2024-12-31', ctype := 'export')",
+        "ok": true,
+        "rows": 1,
+        "ms": 48
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-05 10:15:24 UTC] INFO: Question: Сколько экспортных сделок было в 2024 году и на какую сумму в долларах?
+Response: В 2024 году по экспортным контрактам зарегистрировано:
+
+• Всего сделок в реестре: **1 327**
+• Состоявшихся сделок (без учета аннулированных): **1 229**
+• Аннулировано (не оплачено): **98**
+• Сумма состоявшихся сделок: **202 495 621.00 USD** (аннулированные сделки исключены)
+• Физический объем: **29 075.00 t**
+[2026-11-05 10:16:10 UTC] INFO: Question answered
+    user: {
+      "id": "user-1",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "Какой брокер покупателей был самым активным по числу сделок в 2026 году?\""
+    outcome: "answered"
+    ms: 8584
+    modelCalls: 3
+    queries: [
+      {
+        "query": "top_brokers(side := 'buyer', metric := 'deals', top_n := 5, date_from := '2026-01-01', date_to := '2026-12-31')",
+        "ok": true,
+        "rows": 5,
+        "ms": 101
+      },
+      {
+        "query": "top_brokers(side := 'buyer', metric := 'deals_total', top_n := 5, date_from := '2026-01-01', date_to := '2026-12-31')",
+        "ok": true,
+        "rows": 5,
+        "ms": 90
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-05 10:16:10 UTC] INFO: Question: Какой брокер покупателей был самым активным по числу сделок в 2026 году?"
+Response: 2026-yilda xaridorlar tomonida bitimlar soni böyiça eng faol broker — **FIPI BROKER MCHJ** (kodi: **BK017**).
+
+Asosiy körsatkiçlar:
+• Jami röyxatga olingan bitimlar soni: **2 479** ta
+• Amalga oşirilgan bitimlar (bekor qilinganlarsiz): **2 353** ta
+• Bekor qilingan bitimlar: **126** ta
+• Savdo aylanmasi: **1 641 787 355 530.25 söm** (124 232 149.78 USD)
+• Hududi: **UZ-NW** (Navoiy viloyati)
+[2026-11-05 10:43:54 UTC] INFO: Question answered
+    user: {
+      "id": "user-1",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "2026, 5 noyabr dollar kursi qanaqa?"
+    outcome: "answered"
+    ms: 13922
+    modelCalls: 4
+    queries: [
+      {
+        "query": "usd_rate('2026-11-05')",
+        "ok": true,
+        "rows": 0,
+        "ms": 5
+      },
+      {
+        "query": "SELECT * FROM data_coverage",
+        "ok": true,
+        "rows": 1,
+        "ms": 60
+      },
+      {
+        "query": "usd_rate('2026-10-31')",
+        "ok": true,
+        "rows": 1,
+        "ms": 5
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-05 10:43:54 UTC] INFO: Question: 2026, 5 noyabr dollar kursi qanaqa?
+Response: 2026-yil 5-noyabr sanasi uçun ma'lumotlar bazasida dollar kursi mavjud emas.
+
+Bazada valyuta kurslari faqat **2022-01-01** dan **2026-10-31** gaca bölgan davrni qamrab olgan. Bazadagi eng sönggi mavjud kurs:
+• **2026-10-31**: 1 USD = **13 357.84 söm**
+[2026-11-05 10:45:29 UTC] INFO: Question answered
+    user: {
+      "id": "user-1",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "Какой курс доллара на 5 ноября 2026 года?"
+    outcome: "answered"
+    ms: 7648
+    modelCalls: 3
+    queries: [
+      {
+        "query": "usd_rate('2026-11-05')",
+        "ok": true,
+        "rows": 0,
+        "ms": 5
+      },
+      {
+        "query": "usd_rate('2026-10-31')",
+        "ok": true,
+        "rows": 1,
+        "ms": 4
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-05 10:45:29 UTC] INFO: Question: Какой курс доллара на 5 ноября 2026 года?
+Response: На 5 ноября 2026 года курс доллара в базе данных отсутствует.
+
+Данные по курсам валют охватывают период только с **2022-01-01** по **2026-10-31**. Последний зафиксированный курс в базе:
+• **2026-10-31**: 1 USD = **13 357.84 сум**
+[2026-11-05 16:40:50 UTC] WARN: Answer has numbers not found in tool results
+    unverified: [
+      "9 976 172 669 499.75",
+      "833 209 737.99"
+    ]
+    repairs: 0
+[2026-11-05 16:41:18 UTC] INFO: Question answered
+    user: {
+      "id": "user-2",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "Mart oyida barcha aylanma summasi qancha so'da va dollarda"
+    outcome: "answered"
+    ms: 53663
+    modelCalls: 6
+    queries: [
+      {
+        "query": "trend(period := 'month', date_from := '2026-03-01', date_to := '2026-03-31')",
+        "ok": true,
+        "rows": 43,
+        "ms": 540
+      },
+      {
+        "query": "SELECT deal_year, sum(amount_uzs) as total_uzs, sum(amount_usd) as total_usd, count(*) filter (where not is_cancelled) as deals_traded, count(*) as deals_total FROM v_deals WHERE EXTRACT(MONTH FROM deal_date) = 3 GROUP BY deal_year ORDER BY deal_year",
+        "ok": true,
+        "rows": 5,
+        "ms": 481
+      },
+      {
+        "query": "deal_totals(date_from := '2026-03-01', date_to := '2026-03-31')",
+        "ok": true,
+        "rows": 1,
+        "ms": 135
+      },
+      {
+        "query": "SELECT deal_year, sum(amount_uzs) filter (where not is_cancelled) as total_uzs, sum(amount_usd) filter (where not is_cancelled) as total_usd, count(*) filter (where not is_cancelled) as deals_traded, count(*) as deals_total FROM v_deals WHERE EXTRACT(MONTH FROM deal_date) = 3 GROUP BY deal_year ORDER BY deal_year",
+        "ok": true,
+        "rows": 5,
+        "ms": 66
+      },
+      {
+        "query": "SELECT sum(amount_uzs) filter (where not is_cancelled) as total_uzs, sum(amount_usd) filter (where not is_cancelled) as total_usd, count(*) filter (where not is_cancelled) as deals_traded, count(*) as deals_total FROM v_deals WHERE EXTRACT(MONTH FROM deal_date) = 3",
+        "ok": true,
+        "rows": 1,
+        "ms": 57
+      }
+    ]
+    repaired: true
+    unverified: []
+[2026-11-05 16:41:18 UTC] INFO: Question: Mart oyida barcha aylanma summasi qancha so'da va dollarda
+Response: Joriy 2026-yilning mart oyida birja aylanmasi summasi (bekor qilingan bitimlar hisobga olinmaganda):
+
+• So'mda: **3 049 661 303 763.74 söm**  
+• Dollarda: **241 953 500.07 USD**  
+• Bajarilgan bitimlar soni: **6 714 ta** (reestrda jami **7 241 ta**, shundan **527 tasi** bekor qilingan).
+
+Yillar kesimida mart oylari aylanmasi:
+• 2026-yil mart: **3 049 661 303 763.74 söm** (**241 953 500.07 USD**), **6 714 ta** bitim  
+• 2025-yil mart: **2 329 429 666 121.09 söm** (**185 292 441.54 USD**), **5 614 ta** bitim  
+• 2024-yil mart: **1 748 601 194 572.13 söm** (**149 107 200.70 USD**), **4 873 ta** bitim  
+• 2023-yil mart: **1 572 968 723 615.59 söm** (**140 526 284.69 USD**), **4 664 ta** bitim  
+• 2022-yil mart: **1 275 511 781 427.20 söm** (**116 330 310.99 USD**), **4 019 ta** bitim  
+
+Barcha 2022–2026 yillardagi mart oylari jami aylanmasi: **9 976 172 669 499.75 söm** (**833 209 737.99 USD**), jami **25 884 ta** bajarilgan bitim (**27 884 ta** reestr böyiça).
+[2026-11-06 10:20:50 UTC] INFO: Question answered
+    user: {
+      "id": "user-3",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "Какая доля сделок продавца с ИНН 904661689 за 2024 год аннулирована за неуплату? В процентах от числа сделок."
+    outcome: "answered"
+    ms: 14528
+    modelCalls: 4
+    queries: [
+      {
+        "query": "delivery_stats(dimension := 'seller', date_from := '2024-01-01', date_to := '2024-12-31', seller := '904661689')",
+        "ok": true,
+        "rows": 1,
+        "ms": 860
+      },
+      {
+        "query": "deal_totals(date_from := '2024-01-01', date_to := '2024-12-31', seller := '904661689')",
+        "ok": true,
+        "rows": 1,
+        "ms": 107
+      },
+      {
+        "query": "company_profile('904661689')",
+        "ok": true,
+        "rows": 1,
+        "ms": 532
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-06 10:20:50 UTC] INFO: Question: Какая доля сделок продавца с ИНН 904661689 за 2024 год аннулирована за неуплату? В процентах от числа сделок.
+Response: В 2024 году доля сделок продавца **TO‘LI AGRO MCHJ** (ИНН 904661689), аннулированных за неуплату, составила **6.47%**.
+
+Ключевые показатели за 2024 год:
+• Всего сделок в реестре: **1 128**
+• Аннулировано из-за неуплаты: **73**
+• Успешно заключенных (оплаченных) сделок: **1 055**
+[2026-11-06 10:21:00 UTC] INFO: Question answered
+    user: {
+      "id": "user-3",
+      "name": "<redacted>",
+      "username": "<redacted>"
+    }
+    question: "2022-yilda mis katod bo‘yicha eksport bitimlarining summasi necha AQSh dollari? Bekor qilinganlar hisobga olinmaydi."
+    outcome: "answered"
+    ms: 6262
+    modelCalls: 3
+    queries: [
+      {
+        "query": "find_commodity('mis katod')",
+        "ok": true,
+        "rows": 2,
+        "ms": 68
+      },
+      {
+        "query": "deal_totals(date_from := '2022-01-01', date_to := '2022-12-31', commodity := 'copper_cathode', ctype := 'export')",
+        "ok": true,
+        "rows": 1,
+        "ms": 49
+      }
+    ]
+    repaired: false
+    unverified: []
+[2026-11-06 10:21:00 UTC] INFO: Question: 2022-yilda mis katod bo‘yicha eksport bitimlarining summasi necha AQSh dollari? Bekor qilinganlar hisobga olinmaydi.
+Response: 2022-yilda mis katod (Mis katod) böyiça eksport bitimlarining umumiy summasi (bekor qilinganlar hisobga olinmaganda) **181 880 106.33 USD**ni taşkil etdi.
+
+Asosiy körsatkiçlar:
+• Amalga oşirilgan bitimlar soni: **748** ta (umumiy röyxatdagi **797** tadan **49** tasi bekor qilingan)
+• Umumiy hajm: **18 301.00 t**
+[2026-11-06 14:37:14 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:16 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:17 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:19 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:22 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:26 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:33 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:37:47 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:38:14 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:39:06 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:40:07 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:41:08 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:42:09 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:43:10 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:44:11 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:45:12 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:46:13 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:47:14 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:48:15 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:49:16 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:50:17 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:51:18 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:52:19 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:53:20 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:54:21 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:55:22 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:56:23 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:57:24 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:58:25 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 14:59:26 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:00:27 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:01:28 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:02:29 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:03:30 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:04:31 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:05:32 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:06:33 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:07:35 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:08:36 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:09:37 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:10:38 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:11:39 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:12:40 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:13:41 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:14:42 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:15:43 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:16:44 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:17:45 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:18:46 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:19:46 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:20:47 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:21:48 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:22:49 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:23:52 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:24:53 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:25:54 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:26:55 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:27:56 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:28:57 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:29:58 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:30:58 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:31:59 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:33:01 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
+[2026-11-06 15:34:03 UTC] WARN: Failed to set bot commands
+    err: {
+      "type": "GrammyError",
+      "message": "Call to 'setMyCommands' failed! (401: Unauthorized)",
+      "stack":
+          GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)
+              at toGrammyError (/app/node_modules/grammy/out/core/error.js:47:16)
+              at callApi (/app/node_modules/grammy/out/core/client.js:101:34)
+              at async setBotCommands (/app/src/bot/index.ts:32:17)
+      "method": "setMyCommands",
+      "payload": {
+        "commands": [
+          {
+            "command": "start",
+            "description": "Boşlaş"
+          },
+          {
+            "command": "help",
+            "description": "Yordam"
+          },
+          {
+            "command": "credits",
+            "description": "Dasturçilar"
+          },
+          {
+            "command": "language",
+            "description": "Tilni özgartiriş"
+          }
+        ],
+        "language_code": "uz"
+      },
+      "ok": false,
+      "name": "GrammyError",
+      "error_code": 401,
+      "description": "Unauthorized",
+      "parameters": {}
+    }
